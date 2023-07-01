@@ -6,7 +6,7 @@ export function handleApplicationErrors(
     err: ApplicationError | Error,
     _req: Request,
     res: Response,
-    //next: NextFunction,
+    next: NextFunction,
 ) {
     if (err.name === 'NotFoundError') {
         return res.status(httpStatus.NOT_FOUND).send({

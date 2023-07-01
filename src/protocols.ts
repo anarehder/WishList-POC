@@ -26,7 +26,6 @@ export type ApplicationError = {
     message: string;
 };
 
-//async function findAll()
-//	const users = await connection.query<User>(`SELECT * FROM "users"`);
-//    return users.rows;
-//  }
+export type Collection<TIPO> = {
+    content: TIPO[];
+}
