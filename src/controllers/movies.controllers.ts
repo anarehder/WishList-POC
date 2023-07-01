@@ -1,4 +1,3 @@
-import { CreateMovie } from "@/protocols";
 import { getMoviesServices } from "@/services/movies.services";
 import { Request, Response } from "express";
 import httpStatus from "http-status";
@@ -13,12 +12,12 @@ export async function getMovies(req: Request, res: Response) {
 }
 
 export async function insertMovie(req: Request, res: Response) {
-    //onst { name, streaming, genre } = req.body as CreateMovie;
+    //const { name, streaming, genre } = req.body;
 
     try {
         //console.log(name, streaming, genre);
         //const movies = await getMoviesServices();
-        res.status(httpStatus.OK).send("INSERIDO");
+        res.status(httpStatus.OK).send("INSERIDO2");
     } catch (err) {
         res.status(500).send(err.message);
     }
