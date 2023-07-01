@@ -13,11 +13,11 @@ const {
 } = process.env;
   
 const connection = new Pool({
-    host: DB_HOST || "localhost",
-    port: parseInt(DB_PORT) || 5432,
-    user: DB_USER || "postgres",
-    password: DB_PASSWORD || "postgres",
-    database: DB_NAME || "people"
+    host: DB_HOST,
+    port: parseInt(DB_PORT),
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME
 });
   
 export default connection;
