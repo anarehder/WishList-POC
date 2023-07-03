@@ -19,7 +19,24 @@ export type MovieReview = {
     comments: string;
 };
 
-export type CreateMovieReview = Omit<MovieReview, "id">;
+export type CreateMovieReview = {
+    stars: number;
+    comments: string;
+}
+
+export type FullMovie = {
+    id: number;
+    name: string;
+    streaming: string;
+    genre: string;
+    status: boolean;
+    stars: number;
+    comments: string;
+};
+
+export type moviesNumber = {
+    moviesTotal: number;
+}
 
 export type ApplicationError = {
     name: string;
