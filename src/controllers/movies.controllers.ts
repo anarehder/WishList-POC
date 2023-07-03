@@ -1,5 +1,5 @@
-import { CreateMovie } from "@/protocols";
-import { editMovieServices, getMoviesServices, insertMovieServices } from "@/services/movies.services";
+import { CreateMovie, Movie } from "@/protocols";
+import { editMovieServices, getMoviesFullServices, getMoviesServices, insertMovieServices, insertWatchedServices } from "@/services/movies.services";
 import { Request, Response } from "express";
 import httpStatus from "http-status";
 
@@ -7,6 +7,26 @@ export async function getMovies(req: Request, res: Response) {
     try {
         const movies = await getMoviesServices();
         res.status(httpStatus.OK).send(movies);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+}
+
+export async function getMoviesWithReview(req: Request, res: Response) {
+    try {
+        const movies = await getMoviesFullServices();
+        res.status(httpStatus.OK).send(movies);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+}
+
+export async function insertWatched(req: Request, res: Response) {
+    const { id } = req.params;
+    const numId: number = Number(id);
+    try {
+        await insertWatchedServices(numId);
+        res.sendStatus(httpStatus.ACCEPTED);
     } catch (err) {
         res.status(500).send(err.message);
     }
