@@ -34,6 +34,10 @@ export type FullMovie = {
     comments: string;
 };
 
+export type moviesNumber = {
+    moviesTotal: number;
+}
+
 export type ApplicationError = {
     name: string;
     message: string;

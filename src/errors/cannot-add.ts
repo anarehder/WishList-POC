@@ -20,3 +20,10 @@ export function cannotAddWatched(): ApplicationError {
     message: 'It was not possible to mark as watched!',
   };
 }
+
+export function cannotDeleteMovie(): ApplicationError {
+  return {
+    name: 'BadRequestError',
+    message: 'It was not possible to delete the movie!',
+  };
+}

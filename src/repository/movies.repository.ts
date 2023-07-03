@@ -1,6 +1,6 @@
 import connection from "@/database/database.connection";
 
-import { Collection, CreateMovie, FullMovie, Movie } from "@/protocols";
+import { Collection, CreateMovie, FullMovie, Movie, moviesNumber } from "@/protocols";
 
 export async function getMoviesDB()  {
     const query = `SELECT * FROM wishlist_movies;`;
@@ -11,6 +11,13 @@ export async function getMoviesDB()  {
 export async function getMoviesFullDB()  {
     const query = `SELECT wishlist_movies.*, movies_review.stars, movies_review.comments FROM wishlist_movies LEFT JOIN movies_review ON wishlist_movies.id = movies_review.movie_id;`;
     const result = await connection.query<Collection<FullMovie>>(query);
+    return result;
+}
+
+export async function getNumberOfMoviesDB()  {
+    const query = `SELECT COUNT(*) AS "moviesTotal" FROM wishlist_movies;`;
+    const result = await connection.query<moviesNumber>(query);
+    console.log(result);
     return result;
 }
 
@@ -43,5 +50,11 @@ export async function editMovieDB(editedMovie: CreateMovie, id: number) {
     const {name, streaming, genre} = editedMovie;
     const query = `UPDATE wishlist_movies SET name = $1, streaming = $2, genre = $3 WHERE id = $4;`;
     const result = await connection.query(query, [name, streaming, genre, id]);
+    return result;
+}
+
+export async function deleteMovieDB(id: number) {
+    const query = `DELETE FROM wishlist_movies WHERE id = $1;`;
+    const result = await connection.query(query, [id]);
     return result;
 }

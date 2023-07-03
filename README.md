@@ -45,6 +45,8 @@ FullMovie = { <br>
 
 <br>
 
+**GET -> /movies/number** - retorna o total de filmes já adicionados ao banco.
+
 **PUT -> /movies/watched/:id** - troca o status do filme com o id desejado para true (assistido).
 
 **POST -> /movies** - insere no banco o filme que você deseja assistir, para isso o body deve ter formato:
@@ -63,6 +65,7 @@ O status é criado automaticamente como falso.
 
 **PUT -> /movies/:id** - edita as informações do filme com o id desejado, deve receber um body contendo todos os dados como ao criar um novo filme.
 
+**DELETE -> /movies/:id** - deleta do banco o filme com o id desejado.
 
 ## REVIEWS:
 
@@ -111,7 +114,7 @@ CreateMovieReview = { <br>
 
 - Para todas as requisições em caso de não existir nada cadastrado no banco ainda é retornada a mensagem: There are no items yet!
 
-- Quando o valor for inválido e não for possivel encontra-lo no banco será retornada a mensagem: No result for this search!
+- Quando o valor for inválido, id inexistente no banco por exemplo, e não for possivel encontra-lo no banco será retornada a mensagem: No result for this search!
 
 - Se não for possivel editar ou adicionar um filme ou review será retornada a mensagem: The movie was not inserted/edited! / The movie review was not inserted/edited! / It was not possible to mark as watched!
 
